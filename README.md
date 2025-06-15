@@ -56,7 +56,7 @@ Berikut adalah rincian kontribusi dan dampak nyata penggunaan AI IBM Granite dal
 
 #### 1. Fase Ide & Desain Awal
 * **Masalah:** Mengalami kesulitan dalam menentukan ide proyek yang komprehensif namun tetap realistis untuk dikerjakan sesuai tenggat waktu dan memenuhi semua kriteria penilaian.
-* **Bantuan AI IBM Granite:** Dengan memberikan prompt berisi slide persyaratan proyek, saya meminta AI untuk menganalisis dan memberikan rekomendasi. Granite menyarankan ide "Aplikasi Pencatat Keuangan" karena secara alami mencakup fungsionalitas CRUD dan potensi visualisasi data. AI juga membantu merancang skema data awal untuk koleksi `Transaction` dan `User` di MongoDB.
+* **Bantuan AI IBM Granite:** Dengan memberikan prompt sesuai dengan ide proyek, saya meminta AI untuk menganalisis dan memberikan rekomendasi. Granite menyarankan ide "Aplikasi Pencatat Keuangan" karena secara alami mencakup fungsionalitas CRUD dan potensi visualisasi data. AI juga membantu merancang skema data awal untuk koleksi `Transaction` dan `User` di MongoDB.
 * **Dampak:** Proses brainstorming menjadi sangat efisien dan proyek langsung berada di jalur yang benar sejak awal.
 
 #### 2. Fase Pembangunan Backend & Fitur Kompleks
