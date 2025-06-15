@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+<main>
+  <section class="form-container">
+    <h3>Edit Transaksi</h3>
+    
+    <form action="/update/<%= transaction._id %>" method="POST">
+      <div class="form-control">
+        <label for="title">Deskripsi</label>
+        <input type="text" id="title" name="title" value="<%= transaction.title %>" required>
+      </div>
+
+      <div class="form-control">
+        <label for="category">Kategori</label>
+        <select name="category" id="category" required>
+          <% categories.forEach(cat => { %>
+            <option value="<%= cat._id %>" <%= cat._id.toString() === transaction.category._id.toString() ? 'selected' : '' %>>
+              <%= cat.name %>
+            </option>
+          <% }) %>
+        </select>
+      </div>
+
+      <div class="form-control">
+        <label for="amount">Jumlah (Rp)</label>
+        <input type="number" id="amount" name="amount" value="<%= transaction.amount %>" required>
+      </div>
+
+      <div class="form-control radio-group">
+        <label><input type="radio" name="type" value="income" <% if (transaction.type === 'income') { %>checked<% } %>> Pemasukan</label>
+        <label><input type="radio" name="type" value="expense" <% if (transaction.type === 'expense') { %>checked<% } %>> Pengeluaran</label>
+      </div>
+
+      <button type="submit" class="btn">Simpan Perubahan</button>
+    </form>
+    <a href="/" style="display: block; text-align: center; margin-top: 15px; text-decoration: none;">Batal</a>
+  </section>
+</main>
+
+<%- include('partials/footer') %>

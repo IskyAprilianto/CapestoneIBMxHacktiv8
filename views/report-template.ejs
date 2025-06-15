@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Laporan Transaksi</title>
+    <style>
+      body {
+        font-family: "Helvetica", "Arial", sans-serif;
+        font-size: 12px;
+        color: #333;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .header h1 {
+        margin: 0;
+      }
+      .header p {
+        margin: 5px 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .summary {
+        float: right;
+        width: 250px;
+      }
+      .summary td {
+        border: none;
+      }
+      .summary .label {
+        font-weight: bold;
+      }
+      .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 10px;
+        color: #888;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Laporan Transaksi Keuangan</h1>
+      <p>Pengguna: <%= user.name %> (<%= user.email %>)</p>
+      <p>Periode Laporan: <%= period %></p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Tanggal</th>
+          <th>Deskripsi</th>
+          <th>Kategori</th>
+          <th>Tipe</th>
+          <th>Jumlah</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% transactions.forEach(t => { %>
+        <tr>
+          <td><%= new Date(t.date).toLocaleDateString('id-ID') %></td>
+          <td><%= t.title %></td>
+          <td><%= t.category.name %></td>
+          <td><%= t.type === 'income' ? 'Pemasukan' : 'Pengeluaran' %></td>
+          <td><%= formatRupiah(t.amount) %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <table class="summary">
+      <tr>
+        <td class="label">Total Pemasukan:</td>
+        <td><%= formatRupiah(totalIncome) %></td>
+      </tr>
+      <tr>
+        <td class="label">Total Pengeluaran:</td>
+        <td><%= formatRupiah(totalExpense) %></td>
+      </tr>
+      <tr>
+        <td class="label" style="font-size: 14px">Saldo Akhir:</td>
+        <td style="font-size: 14px; font-weight: bold">
+          <%= formatRupiah(balance) %>
+        </td>
+      </tr>
+    </table>
+
+    <div class="footer">
+      Laporan ini dibuat secara otomatis oleh Dompet Digital pada <%= new
+      Date().toLocaleString('id-ID') %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<%- include('partials/header') %> <%- include('partials/messages') %>
+
+<main>
+  <div class="form-container">
+    <h3>Tambah Kategori Baru</h3>
+    <form action="/categories/add" method="POST">
+      <div class="form-control">
+        <label for="name">Nama Kategori</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="cth: Makanan, Gaji, Tagihan..."
+          required
+        />
+      </div>
+      <button type="submit" class="btn">Tambah Kategori</button>
+    </form>
+  </div>
+
+  <section class="transaction-list">
+    <h3>Daftar Kategori Anda</h3>
+    <ul>
+      <% if(categories.length > 0) { %> <% categories.forEach(cat => { %>
+      <li style="border-right: 5px solid #7f8c8d">
+        <span><%= cat.name %></span>
+        <div class="actions">
+          <form
+            action="/categories/delete/<%= cat._id %>"
+            method="POST"
+            class="delete-form"
+          >
+            <button type="submit" class="delete-btn">×</button>
+          </form>
+        </div>
+      </li>
+      <% }) %> <% } else { %>
+      <p>Anda belum memiliki kategori. Silakan tambahkan di atas.</p>
+      <% } %>
+    </ul>
+    <a
+      href="/"
+      style="
+        display: block;
+        text-align: center;
+        margin-top: 30px;
+        text-decoration: none;
+        font-weight: bold;
+      "
+      >Kembali ke Dashboard</a
+    >
+  </section>
+</main>
+
+<%- include('partials/footer') %>
