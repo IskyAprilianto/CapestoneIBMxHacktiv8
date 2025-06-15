@@ -8,7 +8,7 @@ Aplikasi web full-stack yang dirancang untuk membantu pengguna mengelola keuanga
 
 ## Demo Aplikasi
 
-![Demo Dompet Digital](https://streamable.com/l5f2pn) ---
+![Demo Dompet Digital](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGo3ZXpzOHc0bGJ0YXVtNTVsc2oydWptN2Iyd291cXEybWd3andlcSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/W5ZfCqTVnP6Vgc33Gt/giphy.gif) ---
 
 ## Fitur Utama
 
