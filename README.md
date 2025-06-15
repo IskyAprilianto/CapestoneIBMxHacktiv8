@@ -4,7 +4,7 @@
 
 Aplikasi web full-stack yang dirancang untuk membantu pengguna mengelola keuangan pribadi dengan mudah dan efisien. Pengguna dapat melacak setiap pemasukan dan pengeluaran, mengkategorikannya, dan menganalisis alokasi dana mereka melalui dashboard interaktif. Proyek ini dibangun sebagai Capstone Project Hacktiv8 dengan dukungan ekstensif dari AI (IBM Granite) di setiap fase pengembangan.
 
-**Link Aplikasi Live:** [https://dompet-digital-iskyd.onrender.com](https://dompet-digital-iskyd.onrender.com) ---
+**Link Aplikasi Live:** [capestoneibmxhacktiv8-production-1731.up.railway.app) ---
 
 ## Demo Aplikasi
 
