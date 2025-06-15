@@ -18,11 +18,22 @@ const categoryRoutes = require("./routes/categoryRoutes");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// DB Config
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected..."))
-  .catch((err) => console.error("MongoDB Connection Error:", err));
+// =======================================================
+// LOGIKA KONEKSI DATABASE YANG DIPERBARUI
+// =======================================================
+const dbConnect = async () => {
+  try {
+    const conn = await mongoose.connect(process.env.MONGO_URI);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    return conn;
+  } catch (err) {
+    console.error("MongoDB Connection Error:", err);
+    process.exit(1); // Keluar dari proses jika koneksi gagal
+  }
+};
+
+const dbConnectionPromise = dbConnect();
+// =======================================================
 
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
@@ -33,10 +44,14 @@ app.set("views", path.join(__dirname, "views"));
 // Express session middleware
 app.use(
   session({
-    secret: "secretcat_project_dompet_digital", // Sebaiknya ganti dengan string acak yang lebih aman
+    secret: "secretcat_project_dompet_digital",
     resave: false,
     saveUninitialized: false,
-    store: MongoStore.create({ mongoUrl: process.env.MONGO_URI }),
+    // Menggunakan koneksi yang sudah ada, bukan membuat yang baru
+    store: MongoStore.create({
+      clientPromise: dbConnectionPromise.then(conn => conn.connection.getClient()),
+      collectionName: 'sessions'
+    }),
   })
 );
 
@@ -62,6 +77,6 @@ app.use("/auth", authRoutes);
 app.use("/categories", categoryRoutes);
 
 // Start Server
-app.listen(PORT, '0.0.0.0', () => { // <-- PERUBAHAN DI SINI
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on port ${PORT}`);
 });
